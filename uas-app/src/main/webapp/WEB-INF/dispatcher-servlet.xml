@@ -14,7 +14,7 @@
 	<mvc:annotation-driven />
 	<context:annotation-config />
         	
-    <context:component-scan base-package="org.edu.uas.controller" />
+    <context:component-scan base-package="org.edu.uams.**" />
 	
     <!-- Use spring servlet for all requests, including static resources -->
         <mvc:resources location="/js/" mapping="/js/**" />
@@ -46,5 +46,24 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
+	
+	
+	<!-- Hibernate integration -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="org.edu.uams.**" />
+		<property name="hibernateProperties">
+			<value>
+				hibernate.format_sql=true
+				hibernate.show_sql=true
+				hibernate.hbm2ddl.auto=update
+				hibernate.dialect=${jdbc.dialect}
+				hibernate.jdbc.batch_size=50
+				hibernate.order_inserts=true
+				hibernate.order_updates=true
+			</value>
+		</property>
+	</bean>
+	
         
 </beans>

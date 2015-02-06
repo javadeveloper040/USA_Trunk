@@ -1,4 +1,4 @@
-package org.edu.uas.controller;
+package org.edu.uams.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
