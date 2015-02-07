@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Birthday Greetings</title>
+<script language="javascript">
+function checkAll(){
+	var rno=document.getElementById("d").value;
+	var x=rno.split('/');
+	if(rno==""){
+		
+		alert("The DD/MM field cannot be left blank");
+		return false;
+	}
+	else if((rno.length!=5)||(x.length!=2)||(x[0].length!=2)||(x[1].length!=2))
+		{
+		alert("check the format it should be DD/MM");
+		return false;
+		}
+	else 
+	{
+	return true;
+	}	
+}
+</script>
+</head>
+
+<body bgcolor="skyblue">
+<form action="birth.jsp" method="get()" onsubmit="return checkAll()">
+<table width="100%">
+<tr><th>Enter the date to print Greeting card:</th></tr>
+<tr><th><input type="text" name="d" id="d" size="20">(DD/MM)</th></tr>
+</table>
+
+<center><br/><br/><br/>
+<input type="submit" value="Print Greeting">&nbsp;&nbsp;&nbsp;
+<input type="button" value="       Quit       " onclick="window.close()">
+</center>
+</form>
+
+</body>
+</html>

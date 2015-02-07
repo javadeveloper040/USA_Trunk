@@ -1,0 +1,43 @@
+@CHARSET "ISO-8859-1";
+    table.a {
+        border: solid #66CC99;
+        border-width: 0px 1px 1px 0px;
+        width: 600px;
+    }
+    th.a, td.a {
+        border: solid #66CC99;
+        border-width: 1px 0px 0px 1px;
+        padding: 2px;
+    }
+    th.a {
+        background-color: #339999;
+        color: #FFFFFF;
+    }
+    tr.a {
+       background-color:#E8EEFA;
+    }
+    tr.alt td {
+        background-color: #EEEEEE;
+    }
+    tbody.a {
+        height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+<!--[if IE]>
+       
+        table {
+            border-width: 1px 1px 0px 0px;
+        }
+        thead tr {
+            position: absolute;
+            top: expression(this.offsetParent.scrollTop);
+        }
+        tbody {
+            height: auto;
+        }
+        table tbody tr:first-child td {
+            padding: 29px 4px 4px 4px;
+        }
+<![endif]-->
+

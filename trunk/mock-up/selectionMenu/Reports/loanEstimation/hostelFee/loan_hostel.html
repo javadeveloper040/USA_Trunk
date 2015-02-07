@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Loan Estimation</title>
+<script language="javascript" src="script_loan.js">
+
+ </script>
+</head>
+<body BGCOLOR="SKYBLUE">
+
+
+<form action="loan_hostel.jsp" method="get" onsubmit="return checkAll()"><table><tr><td>
+<fieldset><legend>Hostel Loan Estimation</legend>
+<table height="100" width="100"> 
+        
+        <tr><th>Regd.No:</th><td><input type="text" id="roll" name="roll" size="15" onblur="get()"></td><td rowspan="3"><img id="photo" style="visibility:visible" src="" height="140" width="110"></td></tr>
+        <tr><th>Branch:</th><td><input type="text" id="branch" name="branch" size="15"></td></tr>
+        <tr><th>Sem:</th><td><input type="text" id="sem" name="sem" size="15"></td></tr>
+        <tr><th>Student:</th><td colspan="2"><input type="text" id="student" name="student" size="40"></td></tr>
+        <tr><th>Parent:</th><td colspan="2"><input type="text" id="parent" name="parent" size="40"></td></tr>
+</table>
+</fieldset>
+</td>
+</tr>
+<tr><td>
+<fieldset><legend>Hostel Fee</legend><table>
+<tr>
+                        <th>Enter The MessBill:</th>
+                        <td><input type="text" id="mb" name="mb" size="20"></td>
+                        </tr>
+                        <tr>
+                        <th>Enter The Room Rent</th>
+                        <td><input type="text" id="rr" name="rr" size="20"></td>
+                        
+</tr>
+
+
+
+</table></fieldset>
+</td></tr>
+</table>
+<center>
+<input type="submit" value="VIEW"><input type="button" value="QUIT" onclick="window.close()">
+</center>
+</form>
+
+</body>
+</html>
