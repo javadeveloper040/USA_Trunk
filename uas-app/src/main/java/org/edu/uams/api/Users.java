@@ -1,6 +1,7 @@
 package org.edu.uams.api;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public interface Users extends Serializable{
 	
@@ -19,6 +20,10 @@ public interface Users extends Serializable{
 
 	public abstract String getName();
 
+        public Set<UsersRoles> getUsersRoles();
+
+        public void setUsersRoles(Set<UsersRoles> usersRoles);
+        
 	public abstract void setName(String name);
 
 	public abstract String getAddress();

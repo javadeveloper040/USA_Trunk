@@ -29,13 +29,7 @@
         
         <!-- Select users and user_roles from database -->
 	<authentication-manager>
-	  <authentication-provider>
-		<jdbc-user-service data-source-ref="dataSource"
-		  users-by-username-query=
-		    "select username,password, enabled from users where username=?"
-		  authorities-by-username-query=
-		    "select u.username, ur.role from user_roles ur left join users u on u.id = ur.user_id where u.username=?" />
-	  </authentication-provider>
+	  <authentication-provider ref="customAuthenticationProvider"/>
 	</authentication-manager>
         
 </beans:beans>
