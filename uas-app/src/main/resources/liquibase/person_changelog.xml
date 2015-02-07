@@ -1,0 +1,56 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<changeSet id="person_tableCreation" author="imran">
+		<preConditions onFail="CONTINUE">
+			<not>
+				<tableExists schemaName="uams" tableName="person" />
+			</not>
+		</preConditions>
+		<createTable tableName="person" schemaName="uams">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="firstname" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="middlename" type="varchar(255)" />
+			<column name="lastname" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="dob" type="date">
+				<constraints nullable="false" />
+			</column>
+			<column name="gender" type="varchar(10)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="varchar(50)">
+			</column>
+			<column name="phone" type="varchar(15)">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="addressline1" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="addressline2" type="varchar(255)" />
+			<column name="addressline3" type="varchar(255)" />
+			<column name="country_id" type="bigint">
+				<constraints foreignKeyName="person_country_id"
+					references="country(id)" nullable="false" />
+			</column>
+			<column name="state_id" type="bigint">
+				<constraints foreignKeyName="person_state_id"
+					references="state(id)" nullable="false" />
+			</column>
+			<column name="city" type="varchar(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="postalcode" type="varchar(15)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

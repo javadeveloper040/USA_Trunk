@@ -1,0 +1,29 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+         
+	<changeSet id="users_tableCreation" author="imran">
+		<preConditions onFail="CONTINUE">
+			<not>
+				<tableExists schemaName="uams" tableName="users" />
+			</not>
+		</preConditions>
+		<createTable tableName="users" schemaName="uams">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="username" type="varchar(50)" >
+			<constraints unique="true"/>
+			</column>
+			<column name="password" type="varchar(50)"> 
+				<constraints nullable="false" />
+			</column>
+			<column name="enabled" type="boolean" defaultValue="1" />
+			<column name="person_id" type="bigint"> 
+				<constraints foreignKeyName="users_person_id"
+					references="person(id)" nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>
