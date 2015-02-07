@@ -28,10 +28,10 @@ public class UsersRoleTypeEntity implements UsersRoleType {
 	@Column(name = "id", unique = true, nullable = false)
 	private long id;
 
-	@Column(name = "user_name", unique = true, nullable = false, length = 10)
+	@Column(name = "code", unique = true, nullable = false, length = 20)
 	private String code;
 
-	@Column(name = "pass_word", nullable = false, length = 200)
+	@Column(name = "description", nullable = false, length = 200)
 	private String description;
 
 	public long getId() {
