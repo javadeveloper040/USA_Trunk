@@ -26,31 +26,35 @@ public  abstract class AbstractDaoImpl<T extends Serializable,E extends T> imple
 	}
 
 	protected Session getSession() {
-		return sessionFactory.getCurrentSession();
+            if(session == null)
+            {
+                session=sessionFactory.openSession();
+            }
+		return session;
 	}
 	
 	protected Class<? extends T> entityClass;
 
 
 	public AbstractDaoImpl(final Class<? extends T> paramEntityClass) {
-		session=getSession();
+		//session=getSession();
 		if (paramEntityClass!=null) {
 			this.entityClass=paramEntityClass;
 		}
 	}
 	
 	public T persist(T entity) {
-		Transaction transaction = this.session.getTransaction();
+		Transaction transaction = this.getSession().getTransaction();
 		transaction.begin();
-		this.session.save(entity);
+		this.getSession().save(entity);
 		transaction.commit();
 		return entity;
 	}
 
 	public T update(T entity) {
-		Transaction transaction = this.session.getTransaction();
+		Transaction transaction = this.getSession().getTransaction();
 		transaction.begin();
-		this.session.merge(entity);
+		this.getSession().merge(entity);
 		transaction.commit();
 		return entity;
 	}
@@ -59,17 +63,17 @@ public  abstract class AbstractDaoImpl<T extends Serializable,E extends T> imple
 		if (entity==null) {
 			return;
 		}
-		Transaction transaction = this.session.getTransaction();
+		Transaction transaction = this.getSession().getTransaction();
 		transaction.begin();
-		this.session.delete(entity);
+		this.getSession().delete(entity);
 		transaction.commit();
 	}
 
 	@SuppressWarnings("unchecked")
 	public T findByPrimaryKey(long id) {
-		Transaction transaction = this.session.getTransaction();
+		Transaction transaction = this.getSession().getTransaction();
 		transaction.begin();
-		return (T) session.get(entityClass, id);
+		return (T) getSession().get(entityClass, id);
 	}
 
 	
