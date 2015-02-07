@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MENU page</title>
+<link href="./style.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="./SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="./SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+function win(add,w,h)
+{
+window.open(add,"","width="+w+",height="+h+",location=0,directories=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1,top=5,left=5");
+window.location.reload();
+}
+</script>
+</head>
+<body oncontextmenu="return false">
+<br/><br/><br/><br/><br/><br/>&nbsp;
+<ul id="MenuBar1" class="MenuBarHorizontal">
+  <li><a class="MenuBarItemSubmenu" href="#">Masters</a>
+    <ul>
+      <li><a href="#" class="MenuBarItemSubmenu">Account Master</a>
+        <ul>
+          <li><a href="#" value="./Masters/accountMaster/accountmasternewmodify.jsp" onclick="win(this.value,600,450)">New</a></li>
+          <li><a href="#" value="./Masters/accountMaster/accountmasternewmodify.jsp" onclick="win(this.value,600,500)">Modify</a></li>
+          <li><a href="#" value="./Masters/accountMaster/accountmasterdelete.jsp" onclick="win(this.value,600,500)">Delete</a></li>
+          <li><a href="#" value="./Masters/accountMaster/accountmasterview.jsp" onclick="win(this.value,600,500)">View</a></li>
+        </ul>
+      </li>
+      <li><a href="#" value="./Masters/transportMaster/transport1.jsp" onclick="win(this.value,650,400)">Transport Master</a></li>
+      <li><a href="#" class="MenuBarItemSubmenu">Hostel Master</a>
+        <ul>
+          <li><a href="#" value="./Masters/hostelMaster/hostel_newmodify.jsp" onclick="win(this.value,800,400)">New</a></li>
+          <li><a href="#" value="./Masters/hostelMaster/hostel_newmodify.jsp" onclick="win(this.value,800,400)">Modify</a></li>
+          <li><a href="#" value="./Masters/hostelMaster/hostel_delete.jsp" onclick="win(this.value,800,300)">Delete</a></li>
+          <li><a href="#" value="./Masters/hostelMaster/hostel_view.jsp" onclick="win(this.value,820,300)">View</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="MenuBarItemSubmenu">Fee Master</a>
+        <ul>
+          <li><a href="#" value="./Masters/feeMaster/FeeMaster_newmodify.jsp" onclick="win(this.value,900,650)">New</a></li>
+          <li><a href="#" value="./Masters/feeMaster/FeeMaster_newmodify.jsp" onclick="win(this.value,900,650)">Modify</a></li>
+          <li><a href="#" value="./Masters/feeMaster/FeeMaster_delete.jsp" onclick="win(this.value,900,650)">Delete</a></li>
+          <li><a href="#" value="./Masters/feeMaster/FeeMaster_view.jsp" onclick="win(this.value,900,650)">View</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="MenuBarItemSubmenu">Course Master</a>
+        <ul>
+          <li><a href="#" value="./Masters/courseMaster/course_new.jsp" onclick="win(this.value,1000,630)">New</a></li>
+          <li><a href="#" value="./Masters/courseMaster/course_modify.jsp" onclick="win(this.value,1000,630)">Modify</a></li>
+          <li><a href="#" value="./Masters/courseMaster/course_delete.jsp" onclick="win(this.value,1000,630)">Delete</a></li>
+          <li><a href="#" value="./Masters/courseMaster/course_view.jsp" onclick="win(this.value,1000,630)">View</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="MenuBarItemSubmenu">Building Master</a>
+        <ul>
+          <li><a href="#" value="./Masters/buildingMaster/BuildingMasterModify.jsp" onclick="win(this.value,800,530)">New</a></li>
+          <li><a href="#" value="./Masters/buildingMaster/BuildingMasterModify.jsp" onclick="win(this.value,800,530)">Modify</a></li>
+          <li><a href="#" value="./Masters/buildingMaster/BuildingMaster.jsp" onclick="win(this.value,800,530)">View</a></li>
+          <li><a href="#" value="./Masters/buildingMaster/BuildingMasterDelete.jsp" onclick="win(this.value,800,530)">Delete</a></li>
+        </ul>
+      </li>
+      <li><a href="#" value="./Masters/studentMaster/student_admission_details.jsp" onclick="win(this.value,1000,680)">Student Master</a></li>
+      <li><a href="#" value="./Masters/nominalRoll/nominalroll.jsp" onclick="win(this.value,950,400)">Nominal Role</a></li>
+      <li><a href="#" class="MenuBarItemSubmenu">Individual Fee Table</a>
+        <ul>
+          <li><a href="#" value="./Masters/individualFeeTable/ifeeTableNewSource.jsp" onclick="win(this.value,800,500)">New</a></li>
+          <li><a href="#" value="./Masters/individualFeeTable/ifeeTableModifySource.jsp" onclick="win(this.value,800,500)">Modify</a></li>
+          <li><a href="#" value="./Masters/individualFeeTable/ifeeTableDeleteSource.jsp" onclick="win(this.value,800,500)">Delete</a></li>
+          <li><a href="#" value="./Masters/individualFeeTable/ifeeTableViewSource.jsp" onclick="win(this.value,800,500)">View</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="MenuBarItemSubmenu">Route / Bus Allotment</a>
+      <ul>
+          <li><a href="#" value="./Masters/routeBusAllotment/RouteBusAllot.jsp" onclick="win(this.value,1000,500)">New</a></li>
+          <li><a href="#" value="./Masters/routeBusAllotment/RouteBusAllot.jsp" onclick="win(this.value,1000,500)">Modify</a></li>
+          <li><a href="#" value="./Masters/routeBusAllotment/RouteBusDel.jsp" onclick="win(this.value,1000,500)">Delete</a></li>
+          <li><a href="#" value="./Masters/routeBusAllotment/RouteBusView.jsp" onclick="win(this.value,600,300)">View</a></li>
+        </ul></li>
+      <li><a href="#">Hostel Allotment</a>
+      	<ul>
+          <li><a href="#" value="./Masters/hostelAllotment/hostelallotmentnewmodify.jsp" onclick="win(this.value,900,600)">New</a></li>
+          <li><a href="#" value="./Masters/hostelAllotment/workimghostelmodify.jsp" onclick="win(this.value,900,600)">Modify</a></li>
+          <li><a href="#" value="./Masters/hostelAllotment/hostelallotmentdelete.jsp" onclick="win(this.value,900,600)">Delete</a></li>
+          <li><a href="#" value="./Masters/hostelAllotment/hostelallotmentview.jsp" onclick="win(this.value,900,600)">View</a></li>
+        </ul>
+      </li>
+            
+    </ul>
+  </li>
+  <li><a href="#" class="MenuBarItemSubmenu">Transactions</a>
+    <ul>
+      <li><a href="#" value="./Transactions/regularFees/regular.jsp" onclick="win(this.value,700,500)">Regular Fees</a>
+         </li>
+       
+      <li><a href="#" value="./Transactions/TCIssues/tcissues.html" onclick="win(this.value,600,300)">TC Issues</a></li>
+      <li><a href="#" class="MenuBarItemSubmenu" >Permissions</a>
+        <ul>
+          <li><a href="#" value="./Transactions/permissions/permission.jsp" onclick="win(this.value,600,500)">New</a></li>
+          <li><a href="#" value="./Transactions/permissions/permission.jsp" onclick="win(this.value,600,500)">Modify</a></li>
+          <li><a href="#" value="./Transactions/permissions/permissiondelete.jsp" onclick="win(this.value,600,500)">Delete </a></li>
+          <li><a href="#" value="./Transactions/permissions/viewpermission.jsp" onclick="win(this.value,600,500)">View</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="MenuBarItemSubmenu" >Reset User Password</a>
+        <ul>
+		      <li><a href="#" value="./Transactions/resetPassword/counterPasswordReset.jsp" onclick="win(this.value,400,280)">Counter Incharge Password</a></li>
+		      <li><a href="#" value="./Transactions/resetPassword/resetCounterPsw.jsp" onclick="win(this.value,400,270)">System User Password</a></li>
+		</ul>
+	   </li>
+		<li><a href="#" class="MenuBarItemSubmenu" >Create User</a>
+        <ul>
+      		<li><a href="#" value="./Transactions/createSystemUser/create_user.jsp" onclick="win(this.value,500,320)">System User</a></li> 
+      		<li><a href="#" value="./Transactions/createSystemUser/create_counterUser.jsp" onclick="win(this.value,500,360)">Counter Incharge</a></li>
+      	</ul>
+      </li>      
+    </ul>
+  </li>
+  <li><a class="MenuBarItemSubmenu" href="#">Queries</a>
+    <ul>
+      <li><a href="#" value="./Queries/feeCard/fee-card.jsp" onclick="win(this.value,850,400)">Fee Card</a>      </li>
+      <li><a href="#" value="./Queries/feeDiscountList/discountList.jsp" onclick="win(this.value,600,500)">Fee Discount List</a></li>
+      <li><a href="#" value="./Queries/transportDetails/transportDetails.jsp" onclick="win(this.value,900,400)">Transport Details</a></li>
+      <li><a href="#" value="./Queries/accomidationDetails/AccomodationDetails.jsp" onclick="win(this.value,1000,500)">Accomodation Details</a></li>
+      <li><a href="#" value="./Masters/buildingMaster/BuildingMaster.jsp" onclick="win(this.value,1000,500)">Building Details</a></li>
+    </ul>
+  </li>
+  <li><a href="#" class="MenuBarItemSubmenu">Reports</a>
+    <ul>
+      <li><a href="#" class="MenuBarItemSubmenu">Certificates</a>
+        <ul>
+          <li><a href="#" value="./Reports/certificates/bonafiedCertificate/bonafide.html" onclick="win(this.value,400,340)">Bonafied Certifi.</a></li>
+          <li><a href="#" value="./Reports/certificates/studyCertificate/Study.html" onclick="win(this.value,400,350)">Study Certifi.</a></li>
+        </ul>
+      </li>
+      <li><a href="#" value="./Transactions/TCIssues/tcissues.html" onclick="win(this.value,600,300)">TC Issue Details</a></li>
+      <li><a href="#" class="MenuBarItemSubmenu">Loan Estimation</a>
+        <ul>
+          <li><a href="#" value="./Reports/loanEstimation/regularFee/Loanestimations.html" onclick="win(this.value,500,500)">Reguler Fees</a></li>
+          <li><a href="#" value="./Reports/loanEstimation/hostelFee/loan_hostel.html" onclick="win(this.value,450,500)">Hostel Fees</a></li>
+        </ul>
+      </li>
+      <li><a href="#" value="./Reports/hostelVacatedList/Hostelvacated.jsp" onclick="win(this.value,400,200)">Hostel Vacated List</a></li>
+      <li><a href="#" class="MenuBarItemSubmenu" >Identity Cards</a>
+        <ul>
+          <li><a href="#" value="./Reports/identityCards/studentIDCard/ID.html" onclick="win(this.value,400,300)">College ID Cards</a></li>
+          <li><a href="#" value="./Reports/identityCards/busPassCards/bus_id.html" onclick="win(this.value,470,370)">Bus Pass Cards</a></li>
+        </ul>
+      </li>
+      <li><a href="#" value="./Reports/birthdayGreetings/Birthday.html" onclick="win(this.value,400,200)">Birthday Greetings</a></li>
+    </ul>
+  </li>
+	<li><a href="#" value="./contact.html" onclick="window.close()">Logout</a></li>
+</ul>
+
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
+</body>
+</html>
