@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 public interface Users extends Serializable{
-	
+
 
 	public abstract long getUserId();
 
@@ -18,24 +18,10 @@ public interface Users extends Serializable{
 
 	public abstract void setPassWord(String passWord);
 
-	public abstract String getName();
 
-        public Set<UsersRoles> getUsersRoles();
+	public Set<UsersRoles> getUsersRoles();
 
-        public void setUsersRoles(Set<UsersRoles> usersRoles);
-        
-	public abstract void setName(String name);
+	public void setUsersRoles(Set<UsersRoles> usersRoles);
 
-	public abstract String getAddress();
-
-	public abstract void setAddress(String address);
-
-	public abstract String getGender();
-
-	public abstract void setGender(String gender);
-
-	public abstract String getEmail();
-
-	public abstract void setEmail(String email);
 
 }
