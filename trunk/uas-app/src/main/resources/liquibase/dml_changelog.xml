@@ -1,0 +1,151 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	<changeSet id="country_add" author="imran">
+		<insert tableName="country" schemaName="uams">
+			<column name="id" valueNumeric="1" />
+			<column name="code" value="AUS" />
+			<column name="value" value="Australia" />
+		</insert>
+		<insert tableName="country" schemaName="uams">
+			<column name="id" valueNumeric="2" />
+			<column name="code" value="IND" />
+			<column name="value" value="India" />
+		</insert>
+		<insert tableName="country" schemaName="uams">
+			<column name="id" valueNumeric="3" />
+			<column name="code" value="UK" />
+			<column name="value" value="United Kingdom" />
+		</insert>
+		<insert tableName="country" schemaName="uams">
+			<column name="id" valueNumeric="4" />
+			<column name="code" value="USA" />
+			<column name="value" value="United States Of America" />
+		</insert>
+	</changeSet>
+	<changeSet id="state_add" author="imran">
+	<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="1" />
+			<column name="code" value="QNS" />
+			<column name="value" value="Queensland" />
+			<column name="country_id" value="1" />
+		</insert>
+		<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="2" />
+			<column name="code" value="VIC" />
+			<column name="value" value="Victoria" />
+			<column name="country_id" value="1" />
+		</insert>
+		<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="3" />
+			<column name="code" value="KAR" />
+			<column name="value" value="Karnataka" />
+			<column name="country_id" value="2" />
+		</insert>
+		<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="4" />
+			<column name="code" value="TEL" />
+			<column name="value" value="Telengana" />
+			<column name="country_id" value="2" />
+		</insert>
+		<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="5" />
+			<column name="code" value="WAL" />
+			<column name="value" value="Wales" />
+			<column name="country_id" value="3" />
+		</insert>
+		<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="6" />
+			<column name="code" value="CIS" />
+			<column name="value" value="Channel Islands" />
+			<column name="country_id" value="3" />
+		</insert>
+		<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="7" />
+			<column name="code" value="FLO" />
+			<column name="value" value="Florida" />
+			<column name="country_id" value="4" />
+		</insert>
+		<insert tableName="state" schemaName="uams">
+			<column name="id" valueNumeric="8" />
+			<column name="code" value="ILL" />
+			<column name="value" value="Illinois" />
+			<column name="country_id" value="4" />
+		</insert>
+	</changeSet>
+	<changeSet id="role_type_add" author="imran">
+		<insert tableName="role_type" schemaName="uams">
+			<column name="id" valueNumeric="1" />
+			<column name="role" value="Admin" />
+		</insert>
+		<insert tableName="role_type" schemaName="uams">
+			<column name="id" valueNumeric="2" />
+			<column name="role" value="User" />
+		</insert>
+	</changeSet>
+	<changeSet id="person_add" author="imran">
+		<insert tableName="person" schemaName="uams">
+			<column name="id" valueNumeric="1" />
+			<column name="firstname" value="imran" />
+			<column name="middlename" value="" />
+			<column name="lastname" value="mohamed" />
+			<column name="dob" valueDate="2014-06-12" />
+			<column name="gender" value="Male" />
+			<column name="email" value="abc@gmail.com" />
+			<column name="phone" value="888888888" />
+			<column name="addressline1" value="line1" />
+			<column name="addressline2" value="" />
+			<column name="addressline3" value="" />
+			<column name="country_id" valueNumeric="2" />
+			<column name="state_id" valueNumeric="1" />
+			<column name="city" value="Bangalore" />
+			<column name="postalcode" value="560029" />
+		</insert>
+		<insert tableName="person" schemaName="uams">
+			<column name="id" valueNumeric="2" />
+			<column name="firstname" value="pandu" />
+			<column name="middlename" value="" />
+			<column name="lastname" value="s" />
+			<column name="dob" valueDate="2014-06-24" />
+			<column name="gender" value="Male" />
+			<column name="email" value="abc@gmail.com" />
+			<column name="phone" value="888888888" />
+			<column name="addressline1" value="line1" />
+			<column name="addressline2" value="" />
+			<column name="addressline3" value="" />
+			<column name="country_id" valueNumeric="2" />
+			<column name="state_id" valueNumeric="2" />
+			<column name="city" value="Bangalore" />
+			<column name="postalcode" value="560001" />
+		</insert>
+	</changeSet>
+	<changeSet id="users_add" author="imran">
+		<insert tableName="users" schemaName="uams">
+			<column name="id" valueNumeric="1" />
+			<column name="username" value="imran" />
+			<column name="password" value="password" />
+			<column name="enabled" valueBoolean="TRUE" />
+			<column name="person_id" value="1" />
+		</insert>
+		<insert tableName="users" schemaName="uams">
+			<column name="id" valueNumeric="2" />
+			<column name="username" value="pandu" />
+			<column name="password" value="123456" />
+			<column name="enabled" valueBoolean="TRUE" />
+			<column name="person_id" value="2" />
+		</insert>
+	</changeSet>
+	<changeSet id="user_role_add" author="imran">
+		<insert tableName="user_role" schemaName="uams">
+			<column name="id" valueNumeric="1" />
+			<column name="user_id" valueNumeric="1" />
+			<column name="role_type_id" valueNumeric="1" />
+		</insert>
+		<insert tableName="user_role" schemaName="uams">
+			<column name="id" valueNumeric="2" />
+			<column name="user_id" valueNumeric="2" />
+			<column name="role_type_id" valueNumeric="1"  />
+		</insert>
+	</changeSet>
+</databaseChangeLog>
