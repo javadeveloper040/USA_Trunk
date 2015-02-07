@@ -14,9 +14,14 @@ import org.edu.uams.api.Users;
 @Table(name = "user_master")
 public class UsersEntity implements Users {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	public static final  String  USER_MASTER_FIND_ALL="SELECT u FROM UserMaster u";
 
-	private static final long serialVersionUID = 8949487620455307771L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
