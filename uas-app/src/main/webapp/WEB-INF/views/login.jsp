@@ -30,6 +30,12 @@
     </table>
     <br>
     <fieldset><legend><b>Login</b></legend><br><br>
+        <c:if test="${not empty error}">
+            <div class="error">${error}</div>
+        </c:if>
+        <c:if test="${not empty msg}">
+            <div class="msg">${msg}</div>
+        </c:if>
         <form name='loginForm' action="<c:url value='/j_spring_security_check' />" method="POST">
             <table align="center" border=0>
                 <tr>
@@ -47,7 +53,7 @@
                 </tr>
             </table>
             <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
+                   value="${_csrf.token}" />
         </form>
     </fieldset>
     <br/><br/><br/>
