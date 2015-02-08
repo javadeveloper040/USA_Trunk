@@ -14,6 +14,7 @@ import org.edu.uams.api.UsersDao;
 import org.edu.uams.api.UsersRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -53,8 +54,10 @@ public class MyUserDetailsService implements UserDetailsService {
 
             return new User(users.getUserName(), users.getPassWord(), true, true, true,
                     true, /*AuthorityUtils.NO_AUTHORITIES*/ getGrantAuthorityList(users.getUsersRoles()));
+        }else
+        {
+            throw new BadCredentialsException("Username/Password does not match for " + username);
         }
-        return null;
     }
 
     public List<GrantedAuthority> getGrantAuthorityList(Set<UsersRoles> userRoleNameList) {

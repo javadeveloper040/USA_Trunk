@@ -5,8 +5,11 @@
  */
 package org.edu.uams.controller;
 
+import java.util.Collection;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -22,13 +25,27 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
  
-    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+    @RequestMapping(value = {  "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
  
-	  ModelAndView model = new ModelAndView();
+          ModelAndView model = new ModelAndView();
+          
+            //check if user is admin or normal user
+	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	  if (!(auth instanceof AnonymousAuthenticationToken)) {
+              Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+                if(authorities != null && authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN")))
+                {
+                  model.addObject("title", "Spring Security Login Form - Database Authentication");
+                  model.addObject("message", "This page is for ROLE_ADMIN only!");
+                  model.setViewName("admin");
+                  return model;
+                }
+	  }
+	  
 	  model.addObject("title", "Spring Security Login Form - Database Authentication");
 	  model.addObject("message", "This is default page!");
-	  model.setViewName("success");
+	  model.setViewName("hello");
 	  return model;
  
 	}
@@ -44,7 +61,7 @@ public class LoginController {
  
 	}
  
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 		@RequestParam(value = "logout", required = false) String logout) {
  
