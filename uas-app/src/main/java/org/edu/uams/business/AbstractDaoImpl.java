@@ -4,17 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
 
 import org.edu.uams.api.AbstractDao;
 import org.edu.uams.util.EntityManagerFactoryUtil;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-@Scope("singleton")
-@Repository
-@Transactional
 public  abstract class AbstractDaoImpl<T extends Serializable,E extends T> implements AbstractDao<T>{
 
 
