@@ -1,79 +1,96 @@
 package org.edu.uams.business;
 
 import java.io.Serializable;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 
 import org.edu.uams.api.AbstractDao;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-
+@Scope("singleton")
+@Repository
+@Transactional
 public  abstract class AbstractDaoImpl<T extends Serializable,E extends T> implements AbstractDao<T>{
 
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	protected Session session;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	protected Session getSession() {
-            if(session == null)
-            {
-                session=sessionFactory.openSession();
-            }
-		return session;
+        @PersistenceContext(unitName = "usa_unitname")
+	protected EntityManager em;
+        
+        public EntityManager getEntityManager()
+	{
+		return em;
 	}
 	
 	protected Class<? extends T> entityClass;
 
 
 	public AbstractDaoImpl(final Class<? extends T> paramEntityClass) {
-		//session=getSession();
 		if (paramEntityClass!=null) {
 			this.entityClass=paramEntityClass;
 		}
 	}
-	
+	@Override
 	public T persist(T entity) {
-		Transaction transaction = this.getSession().getTransaction();
+            EntityTransaction transaction = null;
+            try {
+                transaction = em.getTransaction();
 		transaction.begin();
-		this.getSession().save(entity);
+		this.em.persist(entity);
 		transaction.commit();
+            } catch (Exception e) {
+                if(transaction != null)
+                {
+                    transaction.getRollbackOnly();
+                }
+            }
+              
+                
 		return entity;
 	}
-
+        @Override
 	public T update(T entity) {
-		Transaction transaction = this.getSession().getTransaction();
+                
+                EntityTransaction transaction = null;
+                T updatedEntity = null;
+            try {
+                transaction = em.getTransaction();
 		transaction.begin();
-		this.getSession().merge(entity);
+		updatedEntity = this.em.merge(entity);
 		transaction.commit();
-		return entity;
+                } catch (Exception e) {
+                if(transaction != null)
+                {
+                    transaction.getRollbackOnly();
+                }
+            }
+		return updatedEntity;
 	}
-
+        @Override
 	public void delete(T entity) {
 		if (entity==null) {
 			return;
 		}
-		Transaction transaction = this.getSession().getTransaction();
+		EntityTransaction transaction = null;
+            try {
+                transaction = em.getTransaction();
 		transaction.begin();
-		this.getSession().delete(entity);
+		this.em.remove(entity);
 		transaction.commit();
+            } catch (Exception e) {
+                if(transaction != null)
+                {
+                    transaction.getRollbackOnly();
+                }
+            }
 	}
 
-	@SuppressWarnings("unchecked")
+        @Override
 	public T findByPrimaryKey(long id) {
-		Transaction transaction = this.getSession().getTransaction();
-		transaction.begin();
-		return (T) getSession().get(entityClass, id);
+		
+		return this.em.find(entityClass, id);
 	}
 
 	
