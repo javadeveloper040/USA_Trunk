@@ -1,4 +1,4 @@
-package org.edu.uams.util;
+package org.edu.uams.uasutil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

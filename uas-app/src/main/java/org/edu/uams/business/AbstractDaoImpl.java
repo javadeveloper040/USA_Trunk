@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import org.edu.uams.api.AbstractDao;
-import org.edu.uams.util.EntityManagerFactoryUtil;
+import org.edu.uams.uasutil.EntityManagerFactoryUtil;
 
 public  abstract class AbstractDaoImpl<T extends Serializable,E extends T> implements AbstractDao<T>{
 
