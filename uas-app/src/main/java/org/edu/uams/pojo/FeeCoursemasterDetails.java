@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,20 +36,28 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FeeCoursemasterDetails.findById", query = "SELECT f FROM FeeCoursemasterDetails f WHERE f.id = :id")})
 public class FeeCoursemasterDetails implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+    
     @Basic(optional = false)
     @Column(name = "fee_name")
     private String feeName;
+    
     @Column(name = "month")
     private Integer month;
+    
     @Column(name = "year")
     private Integer year;
+    
     @Basic(optional = false)
     @Column(name = "amount")
     private double amount;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
+    
+
+    
     @JoinColumn(name = "course_name", referencedColumnName = "course_name")
     @ManyToOne(optional = false)
     private CoursemasterTab courseName;
@@ -55,11 +65,11 @@ public class FeeCoursemasterDetails implements Serializable {
     public FeeCoursemasterDetails() {
     }
 
-    public FeeCoursemasterDetails(Long id) {
+    public FeeCoursemasterDetails(long id) {
         this.id = id;
     }
 
-    public FeeCoursemasterDetails(Long id, String feeName, double amount) {
+    public FeeCoursemasterDetails(long id, String feeName, double amount) {
         this.id = id;
         this.feeName = feeName;
         this.amount = amount;
@@ -97,11 +107,11 @@ public class FeeCoursemasterDetails implements Serializable {
         this.amount = amount;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -113,26 +123,7 @@ public class FeeCoursemasterDetails implements Serializable {
         this.courseName = courseName;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FeeCoursemasterDetails)) {
-            return false;
-        }
-        FeeCoursemasterDetails other = (FeeCoursemasterDetails) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
+   
     @Override
     public String toString() {
         return "com.mylearning.FeeCoursemasterDetails[ id=" + id + " ]";

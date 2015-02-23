@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,30 +35,39 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "CreateAdmission.findById", query = "SELECT c FROM CreateAdmission c WHERE c.id = :id")})
 public class CreateAdmission implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+   
+   
     @Basic(optional = false)
     @Column(name = "admin_num")
     private long adminNum;
+    
     @Column(name = "roll_num")
     private String rollNum;
+    
     @Column(name = "selected_course")
     private String selectedCourse;
+    
     @Column(name = "selected_branch")
     private String selectedBranch;
+    
     @Column(name = "student_name")
     private String studentName;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
+    
+
 
     public CreateAdmission() {
     }
 
-    public CreateAdmission(Long id) {
+    public CreateAdmission(long id) {
         this.id = id;
     }
 
-    public CreateAdmission(Long id, long adminNum) {
+    public CreateAdmission(long id, long adminNum) {
         this.id = id;
         this.adminNum = adminNum;
     }
@@ -109,26 +120,7 @@ public class CreateAdmission implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CreateAdmission)) {
-            return false;
-        }
-        CreateAdmission other = (CreateAdmission) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
+   
     @Override
     public String toString() {
         return "com.mylearning.CreateAdmission[ id=" + id + " ]";
