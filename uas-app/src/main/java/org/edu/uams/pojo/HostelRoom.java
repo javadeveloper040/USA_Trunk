@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,14 +34,20 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HostelRoom.findById", query = "SELECT h FROM HostelRoom h WHERE h.id = :id")})
 public class HostelRoom implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+
+    
     @Column(name = "room_num")
     private String roomNum;
+    
     @Column(name = "room_capacity")
     private Integer roomCapacity;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
+  
     @JoinColumn(name = "hostel_code", referencedColumnName = "hostel_code")
     @ManyToOne
     private HostelTab hostelCode;
@@ -83,25 +91,6 @@ public class HostelRoom implements Serializable {
         this.hostelCode = hostelCode;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof HostelRoom)) {
-            return false;
-        }
-        HostelRoom other = (HostelRoom) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {

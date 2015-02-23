@@ -11,6 +11,8 @@ import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -31,13 +33,21 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AreaTab.findByAreaFee", query = "SELECT a FROM AreaTab a WHERE a.areaFee = :areaFee")})
 public class AreaTab implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+
+    
     @Basic(optional = false)
     @Column(name = "area_code")
     private String areaCode;
+    
     @Basic(optional = false)
     @Column(name = "area_name")
     private String areaName;
+    
     @Basic(optional = false)
     @Column(name = "area_fee")
     private BigInteger areaFee;
@@ -79,25 +89,14 @@ public class AreaTab implements Serializable {
         this.areaFee = areaFee;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (areaCode != null ? areaCode.hashCode() : 0);
-        return hash;
+    public long getId() {
+        return id;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AreaTab)) {
-            return false;
-        }
-        AreaTab other = (AreaTab) object;
-        if ((this.areaCode == null && other.areaCode != null) || (this.areaCode != null && !this.areaCode.equals(other.areaCode))) {
-            return false;
-        }
-        return true;
+    public void setId(long id) {
+        this.id = id;
     }
+   
 
     @Override
     public String toString() {

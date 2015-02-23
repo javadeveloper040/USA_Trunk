@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -39,37 +41,52 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "BusDetailsTab.findByInchargeMob", query = "SELECT b FROM BusDetailsTab b WHERE b.inchargeMob = :inchargeMob")})
 public class BusDetailsTab implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+    
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+    
     @Basic(optional = false)
     @Column(name = "bus_num")
     private Integer busNum;
+    
     @Basic(optional = false)
     @Column(name = "num_of_seats")
     private int numOfSeats;
+    
     @Basic(optional = false)
     @Column(name = "driver_name")
     private String driverName;
+    
     @Basic(optional = false)
     @Column(name = "driver_mob")
     private long driverMob;
+    
     @Basic(optional = false)
     @Column(name = "faculty_name")
     private String facultyName;
+    
     @Basic(optional = false)
     @Column(name = "faculty_mob")
     private long facultyMob;
+    
     @Basic(optional = false)
     @Column(name = "coordinator_name")
     private String coordinatorName;
+    
     @Basic(optional = false)
     @Column(name = "coordinator_mob")
     private long coordinatorMob;
+    
     @Basic(optional = false)
     @Column(name = "incharge_name")
     private String inchargeName;
+    
     @Basic(optional = false)
     @Column(name = "incharge_mob")
     private long inchargeMob;
+    
     @JoinColumn(name = "layout_name", referencedColumnName = "layout_name")
     @ManyToOne(optional = false)
     private LayoutTab layoutName;
@@ -180,6 +197,14 @@ public class BusDetailsTab implements Serializable {
 
     public void setLayoutName(LayoutTab layoutName) {
         this.layoutName = layoutName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

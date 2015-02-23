@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,28 +35,36 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "BuildingTab.findById", query = "SELECT b FROM BuildingTab b WHERE b.id = :id")})
 public class BuildingTab implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+    
     @Basic(optional = false)
     @Column(name = "room_num")
     private String roomNum;
+    
     @Basic(optional = false)
     @Column(name = "block_name")
     private String blockName;
+    
     @Column(name = "branch_name")
     private String branchName;
+    
     @Column(name = "sem")
     private Short sem;
+    
     @Basic(optional = false)
     @Column(name = "alloted_status")
     private String allotedStatus;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
+    
 
     public BuildingTab() {
     }
 
-    public BuildingTab(Long id) {
+    public BuildingTab(long id) {
         this.id = id;
     }
 
@@ -105,32 +115,12 @@ public class BuildingTab implements Serializable {
         this.allotedStatus = allotedStatus;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BuildingTab)) {
-            return false;
-        }
-        BuildingTab other = (BuildingTab) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
     }
 
     @Override

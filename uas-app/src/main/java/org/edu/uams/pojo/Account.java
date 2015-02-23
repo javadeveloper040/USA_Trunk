@@ -41,29 +41,30 @@ public class Account implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+   
     
     @Basic(optional = false)
     @Column(name = "account_code")
     private String accountCode;
+    
     @Column(name = "account_name")
     private String accountName;
+    
     @Basic(optional = false)
     @Column(name = "bank_name")
     private String bankName;
+    
     @Basic(optional = false)
     @Column(name = "bank_address")
     private String bankAddress;
+    
     @Column(name = "account_number")
     private String accountNumber;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountName")
     private List<FeeTab> feeTabList;
 
@@ -128,30 +129,19 @@ public class Account implements Serializable {
     public void setFeeTabList(List<FeeTab> feeTabList) {
         this.feeTabList = feeTabList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (accountCode != null ? accountCode.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Account)) {
-            return false;
-        }
-        Account other = (Account) object;
-        if ((this.accountCode == null && other.accountCode != null) || (this.accountCode != null && !this.accountCode.equals(other.accountCode))) {
-            return false;
-        }
-        return true;
-    }
+    
 
     @Override
     public String toString() {
         return "com.mylearning.Account[ accountCode=" + accountCode + " ]";
     }
 
+    
+     public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

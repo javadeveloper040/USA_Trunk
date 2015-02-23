@@ -10,6 +10,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,22 +36,29 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "BranchCoursemasterDetails.findById", query = "SELECT b FROM BranchCoursemasterDetails b WHERE b.id = :id")})
 public class BranchCoursemasterDetails implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+    
     @Basic(optional = false)
     @Column(name = "branch_code")
     private String branchCode;
+    
     @Basic(optional = false)
     @Column(name = "branch_name")
     private String branchName;
+    
     @Basic(optional = false)
     @Column(name = "ref")
     private String ref;
+    
     @Basic(optional = false)
     @Column(name = "seats")
     private int seats;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Long id;
+    
+   
     @JoinColumn(name = "course_name", referencedColumnName = "course_name")
     @ManyToOne(optional = false)
     private CoursemasterTab courseName;
@@ -97,17 +106,18 @@ public class BranchCoursemasterDetails implements Serializable {
         return seats;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public void setSeats(int seats) {
         this.seats = seats;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public CoursemasterTab getCourseName() {
         return courseName;
@@ -117,25 +127,6 @@ public class BranchCoursemasterDetails implements Serializable {
         this.courseName = courseName;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BranchCoursemasterDetails)) {
-            return false;
-        }
-        BranchCoursemasterDetails other = (BranchCoursemasterDetails) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {
