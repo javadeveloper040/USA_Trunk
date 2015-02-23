@@ -10,8 +10,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -26,8 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "FeemasterTab.findAll", query = "SELECT f FROM FeemasterTab f"),
-    @NamedQuery(name = "FeemasterTab.findByFeeCode", query = "SELECT f FROM FeemasterTab f WHERE f.feemasterTabPK.feeCode = :feeCode"),
-    @NamedQuery(name = "FeemasterTab.findByFeeName", query = "SELECT f FROM FeemasterTab f WHERE f.feemasterTabPK.feeName = :feeName"),
     @NamedQuery(name = "FeemasterTab.findByAccountName", query = "SELECT f FROM FeemasterTab f WHERE f.accountName = :accountName"),
     @NamedQuery(name = "FeemasterTab.findByFeeSched", query = "SELECT f FROM FeemasterTab f WHERE f.feeSched = :feeSched"),
     @NamedQuery(name = "FeemasterTab.findByFine", query = "SELECT f FROM FeemasterTab f WHERE f.fine = :fine"),
@@ -46,40 +46,68 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FeemasterTab.findByOrigAmount", query = "SELECT f FROM FeemasterTab f WHERE f.origAmount = :origAmount")})
 public class FeemasterTab implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected FeemasterTabPK feemasterTabPK;
+    
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private long id;
+    
+    @Basic(optional = false)
+    @Column(name = "fee_code")
+    private String feeCode;
+      
+    @Basic(optional = false)
+    @Column(name = "fee_name")
+    private String feeName;
+    
     @Basic(optional = false)
     @Column(name = "account_name")
     private String accountName;
+    
     @Column(name = "fee_sched")
     private String feeSched;
+    
     @Column(name = "fine")
     private String fine;
+    
     @Column(name = "refundable")
     private String refundable;
+    
     @Column(name = "exclude")
     private String exclude;
+    
     @Column(name = "fee_admin")
     private String feeAdmin;
+    
     @Column(name = "fee_cat")
     private String feeCat;
+    
     @Column(name = "fees_type")
     private String feesType;
+    
     @Column(name = "under_group")
     private String underGroup;
+    
     @Column(name = "counter_type")
     private String counterType;
+    
     @Basic(optional = false)
     @Column(name = "counter_num")
     private int counterNum;
+    
     @Column(name = "counter_name")
     private String counterName;
+    
     @Column(name = "location")
     private String location;
+    
     @Column(name = "incharge")
     private String incharge;
+    
     @Column(name = "password")
     private String password;
+    
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "orig_amount")
     private BigDecimal origAmount;
@@ -87,27 +115,6 @@ public class FeemasterTab implements Serializable {
     public FeemasterTab() {
     }
 
-    public FeemasterTab(FeemasterTabPK feemasterTabPK) {
-        this.feemasterTabPK = feemasterTabPK;
-    }
-
-    public FeemasterTab(FeemasterTabPK feemasterTabPK, String accountName, int counterNum) {
-        this.feemasterTabPK = feemasterTabPK;
-        this.accountName = accountName;
-        this.counterNum = counterNum;
-    }
-
-    public FeemasterTab(String feeCode, String feeName) {
-        this.feemasterTabPK = new FeemasterTabPK(feeCode, feeName);
-    }
-
-    public FeemasterTabPK getFeemasterTabPK() {
-        return feemasterTabPK;
-    }
-
-    public void setFeemasterTabPK(FeemasterTabPK feemasterTabPK) {
-        this.feemasterTabPK = feemasterTabPK;
-    }
 
     public String getAccountName() {
         return accountName;
@@ -237,29 +244,30 @@ public class FeemasterTab implements Serializable {
         this.origAmount = origAmount;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (feemasterTabPK != null ? feemasterTabPK.hashCode() : 0);
-        return hash;
+    public long getId() {
+        return id;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FeemasterTab)) {
-            return false;
-        }
-        FeemasterTab other = (FeemasterTab) object;
-        if ((this.feemasterTabPK == null && other.feemasterTabPK != null) || (this.feemasterTabPK != null && !this.feemasterTabPK.equals(other.feemasterTabPK))) {
-            return false;
-        }
-        return true;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "com.mylearning.FeemasterTab[ feemasterTabPK=" + feemasterTabPK + " ]";
+    public String getFeeCode() {
+        return feeCode;
     }
+
+    public void setFeeCode(String feeCode) {
+        this.feeCode = feeCode;
+    }
+
+    public String getFeeName() {
+        return feeName;
+    }
+
+    public void setFeeName(String feeName) {
+        this.feeName = feeName;
+    }
+
+ 
     
 }
