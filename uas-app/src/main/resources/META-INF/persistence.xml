@@ -2,18 +2,27 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="TestAppPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-  
-        <class>org.edu.uams.pojo.UsersEntity</class>
-        <class>org.edu.uams.pojo.UsersRolesEntity</class>
-        <class>org.edu.uams.pojo.UsersRoleTypeEntity</class>
+    <class>org.edu.uams.pojo.UsersEntity</class>
+    <class>org.edu.uams.pojo.UsersRolesEntity</class>
+    <class>org.edu.uams.pojo.UsersRoleTypeEntity</class>
+    <class>org.edu.uams.pojo.StudentInterqualificationDetailsTab</class>
+    <class>org.edu.uams.pojo.StudentCorrAddressDetailsTab</class>
+    <class>org.edu.uams.pojo.StudentTab</class>
+    <class>org.edu.uams.pojo.StudentPermAddressDetailsTab</class>
+    <class>org.edu.uams.pojo.StudentOtherDetailsTab</class>
+    <class>org.edu.uams.pojo.StudentDegreequalificationDetailsTab</class>
+    <class>org.edu.uams.pojo.StudentPersonalDetailsTab</class>
+    <class>org.edu.uams.pojo.StudentDiplomaqualificationDetailsTab</class>
+    <class>org.edu.uams.pojo.StudentFeeTab</class>
+    <class>org.edu.uams.pojo.StudentSscqualificationDetailsTab</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/movedb"/>
       <property name="javax.persistence.jdbc.password" value="password"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.user" value="jdbcusr"/>
-      <property name="eclipselink.ddl-generation" value="create-tables" />  
-      <property name="eclipselink.jdbc.native-sql" value="true" />
-			<property name="eclipselink.logging.level" value="FINE"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+      <property name="eclipselink.jdbc.native-sql" value="true"/>
+      <property name="eclipselink.logging.level" value="FINE"/>
     </properties>
   </persistence-unit>
 </persistence>
